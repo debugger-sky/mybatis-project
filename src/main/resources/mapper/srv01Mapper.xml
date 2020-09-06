@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mybatis.mybatisproject.api.srv01.mapper.Srv01Mapper">
+
+    <select id="selectSrv01List" resultType="com.mybatis.mybatisproject.api.srv01.dto.Srv01DTO">
+        SELECT ID
+              ,TITLE
+              ,CONTENT
+              ,USER_ID
+              ,CREATE_DATE
+              ,UPDATE_DATE
+          FROM TB_SRV01
+    </select>
+
+    <select id="selectSrv01ListUseVo" parameterType="com.mybatis.mybatisproject.api.srv01.vo.Srv01VO" resultType="com.mybatis.mybatisproject.api.srv01.dto.Srv01DTO">
+        SELECT ID
+              ,TITLE
+              ,CONTENT
+              ,USER_ID
+              ,CREATE_DATE
+              ,UPDATE_DATE
+        FROM TB_SRV01
+        WHERE 1=1
+        <if test="userId != null and userId neq ''">
+            AND USER_ID = #{userId}
+        </if>
+        <if test="title != null and title neq ''">
+            AND TITLE LIKE '%' ||  #{title} || '%'
+        </if>
+    </select>
+
+</mapper>

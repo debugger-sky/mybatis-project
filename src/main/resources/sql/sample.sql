@@ -1,0 +1,2 @@
+insert into tb_user (user_id, user_nm, user_pw, create_date, update_date) VALUES ('sky001', 'sky', 'sky', now(), now());
+insert into tb_srv01 (title, content, user_id, create_date, update_date) VALUES ('temp-title01', 'this is sample', 'sky001', now(), now());
